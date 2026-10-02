@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <!--
+    Classic (non-SDK) MSBuild project for Visual Studio 2019/2022.
+
+    The primary, dependency-free build is build.ps1, which uses the in-box
+    .NET Framework compiler. This project exists for people who prefer Visual
+    Studio or MSBuild:  msbuild src\VlanConfig95.csproj /p:Configuration=Release
+  -->
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props"
+          Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{3F1A9C2E-7B54-4D18-9E44-2C7A5B0D6F31}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>VlanConfig95</RootNamespace>
+    <AssemblyName>VlanConfig95</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <!-- C# 5 keeps the source buildable with the in-box legacy compiler. -->
+    <LangVersion>5</LangVersion>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <ApplicationIcon>..\assets\app.ico</ApplicationIcon>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <Prefer32Bit>false</Prefer32Bit>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>RELEASE</DefineConstants>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <!-- JavaScriptSerializer, used by ProfileStore for the profiles.json file. -->
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Windows.Forms" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Core\AdapterInfo.cs" />
+    <Compile Include="Core\Elevation.cs" />
+    <Compile Include="Core\Log.cs" />
+    <Compile Include="Core\NetworkService.cs" />
+    <Compile Include="Core\PowerShellRunner.cs" />
+    <Compile Include="Core\PsScripts.cs" />
+    <Compile Include="Core\RecordSet.cs" />
+    <Compile Include="Core\NetworkProfile.cs" />
+    <Compile Include="Core\ProfileApplier.cs" />
+    <Compile Include="Core\ProfileScripts.cs" />
+    <Compile Include="Core\ProfileStore.cs" />
+    <Compile Include="Core\Settings.cs" />
+    <Compile Include="Core\VlanInspector.cs" />
+    <Compile Include="Ui\ClassicButton.cs" />
+    <Compile Include="Ui\ClassicControls.cs" />
+    <Compile Include="Ui\ClassicListBox.cs" />
+    <Compile Include="Ui\DetailsForm.cs" />
+    <Compile Include="Ui\MainForm.cs" />
+    <Compile Include="Ui\TablessTabControl.cs" />
+    <Compile Include="Ui\Win95Chrome.cs" />
+    <Compile Include="Ui\Win95Form.cs" />
+    <Compile Include="Ui\Win95MessageBox.cs" />
+    <Compile Include="Ui\Win95Style.cs" />
+    <Compile Include="Ui\OptionsForm.cs" />
+    <Compile Include="Ui\ProfileForm.cs" />
+    <Compile Include="Ui\ProfileRunner.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\assets\app.ico">
+      <Link>app.ico</Link>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="app.manifest" />
+  </ItemGroup>
+
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
