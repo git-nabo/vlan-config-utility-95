@@ -44,10 +44,6 @@ Network profile editor:
 
 ![Profile editor](docs/images/profile-editor.png)
 
-Options dialog:
-
-![Options](docs/images/options.png)
-
 About dialog:
 
 ![About](docs/images/about.png)
