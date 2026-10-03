@@ -2,6 +2,8 @@
 
 VLAN Configuration Utility 95 is a small Windows administration tool for inspecting network adapters, configuring IEEE 802.1Q VLAN IDs where the driver allows it, and applying reusable IPv4 network profiles.
 
+VLAN, IP, gateway and DNS changes can interrupt network connectivity. Test configurations in a non-production environment first.
+
 It combines current Windows networking functionality with a classic Windows 95-inspired interface.
 
 ## Overview
@@ -154,6 +156,18 @@ APIPA (`169.254.x.x`) self-assigned addresses are treated as "no usable address"
 - Profiles and settings are stored per user in `%LOCALAPPDATA%\VlanConfig95\`. Nothing is written outside that folder.
 - The application makes no network connections of its own.
 
-## Credits
+## Disclaimer
 
-Developed by Khaled Nabo (geissler-IT).
+This project is experimental hobby software and is provided as-is.
+
+Use it at your own risk. The author and geissler-IT make no guarantees regarding correctness, availability, compatibility or fitness for a particular purpose.
+
+The author and geissler-IT are not responsible for data loss, network outages, misconfiguration, service interruption or other damage resulting from the use of this software.
+
+Always verify changes before using the tool in production environments.
+
+## Developer
+
+Khaled Nabo (geissler-IT).
+
+This is a personal hobby project and is not an officially supported geissler-IT product.
